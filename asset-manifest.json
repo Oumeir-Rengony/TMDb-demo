@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/tmdb-demo/static/css/main.8ad31e00.chunk.css",
-    "main.js": "/tmdb-demo/static/js/main.71a12fe8.chunk.js",
-    "main.js.map": "/tmdb-demo/static/js/main.71a12fe8.chunk.js.map",
-    "runtime-main.js": "/tmdb-demo/static/js/runtime-main.9c967a0f.js",
-    "runtime-main.js.map": "/tmdb-demo/static/js/runtime-main.9c967a0f.js.map",
-    "static/js/2.fa1ab855.chunk.js": "/tmdb-demo/static/js/2.fa1ab855.chunk.js",
-    "static/js/2.fa1ab855.chunk.js.map": "/tmdb-demo/static/js/2.fa1ab855.chunk.js.map",
-    "static/js/3.59068b52.chunk.js": "/tmdb-demo/static/js/3.59068b52.chunk.js",
-    "static/js/3.59068b52.chunk.js.map": "/tmdb-demo/static/js/3.59068b52.chunk.js.map",
-    "index.html": "/tmdb-demo/index.html",
-    "static/css/main.8ad31e00.chunk.css.map": "/tmdb-demo/static/css/main.8ad31e00.chunk.css.map",
-    "static/js/2.fa1ab855.chunk.js.LICENSE.txt": "/tmdb-demo/static/js/2.fa1ab855.chunk.js.LICENSE.txt",
-    "static/media/clapperboard.a4d989bf.svg": "/tmdb-demo/static/media/clapperboard.a4d989bf.svg",
-    "static/media/info.0ac460cb.svg": "/tmdb-demo/static/media/info.0ac460cb.svg"
+    "main.css": "/TMDb-demo/static/css/main.8ad31e00.chunk.css",
+    "main.js": "/TMDb-demo/static/js/main.71a12fe8.chunk.js",
+    "main.js.map": "/TMDb-demo/static/js/main.71a12fe8.chunk.js.map",
+    "runtime-main.js": "/TMDb-demo/static/js/runtime-main.0eef7b70.js",
+    "runtime-main.js.map": "/TMDb-demo/static/js/runtime-main.0eef7b70.js.map",
+    "static/js/2.fa1ab855.chunk.js": "/TMDb-demo/static/js/2.fa1ab855.chunk.js",
+    "static/js/2.fa1ab855.chunk.js.map": "/TMDb-demo/static/js/2.fa1ab855.chunk.js.map",
+    "static/js/3.59068b52.chunk.js": "/TMDb-demo/static/js/3.59068b52.chunk.js",
+    "static/js/3.59068b52.chunk.js.map": "/TMDb-demo/static/js/3.59068b52.chunk.js.map",
+    "index.html": "/TMDb-demo/index.html",
+    "static/css/main.8ad31e00.chunk.css.map": "/TMDb-demo/static/css/main.8ad31e00.chunk.css.map",
+    "static/js/2.fa1ab855.chunk.js.LICENSE.txt": "/TMDb-demo/static/js/2.fa1ab855.chunk.js.LICENSE.txt",
+    "static/media/clapperboard.a4d989bf.svg": "/TMDb-demo/static/media/clapperboard.a4d989bf.svg",
+    "static/media/info.0ac460cb.svg": "/TMDb-demo/static/media/info.0ac460cb.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.9c967a0f.js",
+    "static/js/runtime-main.0eef7b70.js",
     "static/js/2.fa1ab855.chunk.js",
     "static/css/main.8ad31e00.chunk.css",
     "static/js/main.71a12fe8.chunk.js"
