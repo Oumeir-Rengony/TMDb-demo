@@ -1,0 +1,41 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Merienda:wght@400;700&display=swap');
+
+.navbar{
+    width:100%;
+    padding:12px;
+    /* border:solid; */
+    background: linear-gradient(322deg, rgba(143,112,227,1) 13%, rgba(161,152,205,1) 43%, rgba(101,146,215,1) 69%, rgba(157,184,231,1) 100%);
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content:space-between;
+}
+.logo{
+    display:inline-block;
+    width:100%;
+    max-width:170px;
+}
+.logo img{
+    width:38px;
+    height:38px;
+}
+
+.logo span{
+    font-size:24px;
+    font-family: 'Merienda';
+}
+
+@media only screen and (min-width: 1024px) {
+
+    .logo img{
+        width:50px;
+        height:50px;
+    }
+    
+    .logo span{
+        font-size:30px;
+        font-family: 'Merienda';
+    }
+
+}

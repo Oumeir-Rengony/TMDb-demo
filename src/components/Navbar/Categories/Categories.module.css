@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300&display=swap');
+
+.wrapper_dropdown{
+    display:inline-block;
+    position: relative;
+    width: 200px;
+    height:35px;
+    padding: 7px;
+    margin-top:7px;
+    background: #fff;
+    border-radius: 7px;
+    border: 1px solid rgba(0,0,0,0.3);
+    box-shadow: 0 1px 1px rgba(50,50,50,0.1);
+    cursor: pointer;
+    outline: none;
+    font-weight: bold;
+    font-family: 'Fira Code';
+    color: #8AA8BD;
+    z-index:2;
+}
+
+.wrapper_dropdown:after {
+    content: "";
+    width: 0;
+    height: 0;
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    margin-top: -3px;
+    border-style: solid;
+    border-color: #8aa8bd transparent transparent transparent;
+    border-width: 6px;
+}
+
+.dropdown {
+    position: absolute;
+    top: 140%;
+    left: 0;
+    right: 0;
+    background: white;
+    border-radius: inherit;
+    border: 1px solid rgba(0,0,0,0.17);
+    box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    font-weight: normal;
+    transition: all 0.3s ease-in;
+    list-style: none;
+    opacity: 0;
+    pointer-events:none;
+}
+
+.dropdown_active{
+    opacity: 1;
+    pointer-events:all;
+}
+
+.dropdown:before {
+    content: "";
+    width: 1px;
+    height: 1px;
+    position: absolute;
+    bottom: 100%;
+    right: 13px;
+    border-style: solid;
+    border-color: transparent transparent  rgba(0,0,0,0.2) transparent;
+    border-width: 8px;    
+}
+
+.dropdown li a {
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    color: #8aa8bd;
+    border-bottom: 1px solid #e6e8ea;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,1);
+    transition: all 0.3s ease-out;
+}
+
+.dropdown li:first-of-type a {
+    border-radius: 7px 7px 0 0;
+}
+
+.dropdown li:last-of-type a {
+    border: none;
+    border-radius: 0 0 7px 7px;
+}
+
+.dropdown li:hover a {
+    background: #a9e4e47a;
+}
+
+
+@media only screen and (min-width: 1024px) {
+
+    .wrapper_dropdown{
+        height:45px;
+        padding:10px;
+    }
+
+}
