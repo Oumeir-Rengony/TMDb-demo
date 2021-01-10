@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { Switch, Route} from 'react-router-dom';
 import axios from 'axios';
 import styles from './App.module.css';
 import Movies from './components/Movies/Movies';
@@ -7,14 +8,23 @@ import { GetPopularMovies, GetUpcomingMovies, GetTopRatedMovies} from './Utils/a
 function App() {
 
   const [popularMovies, setPopularMovies] = useState([]);
-  
+  const [upcomingMovies, setUpcomingMovies] = useState([]);
+  const [topRatedMovies, setTopRatedMovies] = useState([]);
+
   useEffect ( ()=> {
-    axios.get(GetPopularMovies())
-      .then(response => {
-        setPopularMovies(response.data.results);
+
+    let URLs = [GetPopularMovies(), GetUpcomingMovies(), GetTopRatedMovies()]
+
+    const promiseArray = URLs.map(url => axios.get(url));
+
+    Promise.all(promiseArray)
+      .then((response) => {
+        setPopularMovies(response[0].data.results);
+        setUpcomingMovies(response[1].data.results);
+        setTopRatedMovies(response[2].data.results);
       })
-      .catch( err => {
-        console.log(err);
+      .catch((err) => {
+        return err;
       });
 
   }, []);
@@ -22,7 +32,19 @@ function App() {
   return (
 
       <div id={styles.Wrapper}>
-        <Movies movies={popularMovies}/>
+          <Switch>
+            <Route path="/" exact>
+              <Movies movies={popularMovies}/>
+            </Route>
+            
+            <Route path="/upcoming">
+              <Movies movies={upcomingMovies}/>
+            </Route>
+            
+            <Route path="/toprated">
+              <Movies movies={topRatedMovies}/>
+            </Route>
+          </Switch>
       </div>
   );
 
