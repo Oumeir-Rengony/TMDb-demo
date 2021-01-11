@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/TMDb-demo/static/css/main.8ad31e00.chunk.css",
+    "main.css": "/TMDb-demo/static/css/main.c925dea8.chunk.css",
     "main.js": "/TMDb-demo/static/js/main.42ee44b6.chunk.js",
     "main.js.map": "/TMDb-demo/static/js/main.42ee44b6.chunk.js.map",
     "runtime-main.js": "/TMDb-demo/static/js/runtime-main.0eef7b70.js",
@@ -10,7 +10,7 @@
     "static/js/3.59068b52.chunk.js": "/TMDb-demo/static/js/3.59068b52.chunk.js",
     "static/js/3.59068b52.chunk.js.map": "/TMDb-demo/static/js/3.59068b52.chunk.js.map",
     "index.html": "/TMDb-demo/index.html",
-    "static/css/main.8ad31e00.chunk.css.map": "/TMDb-demo/static/css/main.8ad31e00.chunk.css.map",
+    "static/css/main.c925dea8.chunk.css.map": "/TMDb-demo/static/css/main.c925dea8.chunk.css.map",
     "static/js/2.b1727aa5.chunk.js.LICENSE.txt": "/TMDb-demo/static/js/2.b1727aa5.chunk.js.LICENSE.txt",
     "static/media/clapperboard.a4d989bf.svg": "/TMDb-demo/static/media/clapperboard.a4d989bf.svg",
     "static/media/info.0ac460cb.svg": "/TMDb-demo/static/media/info.0ac460cb.svg"
@@ -18,7 +18,7 @@
   "entrypoints": [
     "static/js/runtime-main.0eef7b70.js",
     "static/js/2.b1727aa5.chunk.js",
-    "static/css/main.8ad31e00.chunk.css",
+    "static/css/main.c925dea8.chunk.css",
     "static/js/main.42ee44b6.chunk.js"
   ]
 }
