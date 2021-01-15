@@ -30,11 +30,21 @@ const Pagination = ({setPage, currentMovie, setPopularMovies, setUpcomingMovies,
         
     };
 
+    const setPagesLink = (page) => {
+
+        if(currentMovie === 'Popular'){
+            return `/${page}`;
+        }
+        else{
+            return `/${currentMovie.toLowerCase()}/${page}`;
+        }
+    };
+
     const pageNumbers = () => {
         const array = [];
 
         for(let i=1; i<=10; i++){
-            array.push(<Link key={i} className={styles.page_numbers} to={`/${currentMovie.toLowerCase()}/${i.toString()}`} onClick={handleClick}>{i}</Link>);
+            array.push(<Link key={i} className={styles.page_numbers} to={setPagesLink(i.toString())} onClick={handleClick}>{i}</Link>);
         }
 
         return array;

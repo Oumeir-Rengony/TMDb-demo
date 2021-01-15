@@ -42,7 +42,7 @@ function App() {
 
             <Switch>
 
-              <Route path={`/popular/:${pageNo}`} exact>
+              <Route path={`/:${pageNo}?`} exact>
                 <Movies movies={popularMovies} page={pageNo}/>
               </Route>
               

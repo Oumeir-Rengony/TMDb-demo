@@ -49,9 +49,9 @@ const Categories = ({currentMovie, setCurrentMovie, setPage,
         <div className={styles.wrapper_dropdown} onClick={handleWrapperDropdownClick}>
             <span>{currentMovie}</span>
             <ul className={`${styles.dropdown} ${dropdownStyle()}`}>
-                <li onClick={handleMovieCategorie}><Link to="/popular/1">Popular</Link></li>
+                <li onClick={handleMovieCategorie}><Link to="/1">Popular</Link></li>
                 <li onClick={handleMovieCategorie}><Link to="/upcoming/1">Upcoming</Link></li>
-                <li onClick={handleMovieCategorie}><Link to="/topRated/1">TopRated</Link></li>
+                <li onClick={handleMovieCategorie}><Link to="/toprated/1">TopRated</Link></li>
             </ul>
         </div>
     );
