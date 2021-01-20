@@ -1,10 +1,10 @@
 import React from 'react';
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import styles from './Categories.module.css';
 import { getMovies } from '../../../Utils/api';
 
-const Categories = ({currentMovie, setCurrentMovie, setPage,
+const Categories = ({currentMovie, setCurrentMovie,
                         setUpcomingMovies, setTopRatedMovies, topRatedMovies, upcomingMovies}) => {
 
     const [isDropdownVisible, setDropdownVisibility] = useState(false);
@@ -37,11 +37,8 @@ const Categories = ({currentMovie, setCurrentMovie, setPage,
 
     const handleMovieCategorie = (e) => {
         let currentCategory = e.target.innerText;
-        setPage(1);
         setCurrentMovie(currentCategory);
-
         LoadMovieData(currentCategory);
-        
     };
 
     return(
@@ -60,4 +57,4 @@ const Categories = ({currentMovie, setCurrentMovie, setPage,
 
 };
 
-export default Categories;
+export default withRouter(Categories);

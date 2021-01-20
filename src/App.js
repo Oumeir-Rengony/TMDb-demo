@@ -13,12 +13,10 @@ function App() {
   const [upcomingMovies, setUpcomingMovies] = useState([{id:1, page:1, data:[]}]);
   const [topRatedMovies, setTopRatedMovies] = useState([{id:1, page:1, data:[]}]);
   const [currentMovie, setCurrentMovie] = useState('Popular');
-  const [pageNo, setPageNo] = useState(1);
-
 
   useEffect ( ()=> {
 
-    const popularMoviesData = getMovies('popular', pageNo);
+    const popularMoviesData = getMovies('popular', 1);
     popularMoviesData.then(response => {
       setPopularMovies([{id:1, page:1, data:response}]);
     });
@@ -32,7 +30,6 @@ function App() {
 
           <Navbar currentMovie={currentMovie}
                   setCurrentMovie={setCurrentMovie} 
-                  setPage={setPageNo}
                   setUpcomingMovies={setUpcomingMovies}
                   setTopRatedMovies={setTopRatedMovies}
                   topRatedMovies={topRatedMovies}
