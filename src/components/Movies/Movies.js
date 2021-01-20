@@ -7,8 +7,6 @@ import { withRouter } from "react-router-dom";
 const Movies = ({ movies, match}) => {
 
     let page = match.params.page;
-
-    console.log(match);
     
     if( page === undefined)
         page = 1;

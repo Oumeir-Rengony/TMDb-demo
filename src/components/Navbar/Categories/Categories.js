@@ -1,45 +1,15 @@
 import React from 'react';
 import { useState } from 'react';
-import { Link, withRouter } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import styles from './Categories.module.css';
-import { getMovies } from '../../../Utils/api';
 
-const Categories = ({currentMovie, setCurrentMovie,
-                        setUpcomingMovies, setTopRatedMovies, topRatedMovies, upcomingMovies}) => {
+const Categories = ({currentMovie,handleMovieCategorie}) => {
 
     const [isDropdownVisible, setDropdownVisibility] = useState(false);
 
     const handleWrapperDropdownClick = () => setDropdownVisibility(currentVisibility => !currentVisibility);
 
     const dropdownStyle = () => isDropdownVisible?styles.dropdown_active:null;
-
-    const LoadMovieData = (currentCategory) => {
-
-        const initialUpcomingData = upcomingMovies[0].data.length === 0;
-        const initialTopRatedData = topRatedMovies[0].data.length===0;
-
-        if( initialUpcomingData|| initialTopRatedData){
-
-            currentCategory = currentCategory.toLowerCase();
-    
-            getMovies(currentCategory, 1).then(response => {
-    
-                if(currentCategory === 'upcoming' && initialUpcomingData){
-                    setUpcomingMovies([{id:1, page:1, data:response}]);
-                }
-                else if(currentCategory === 'toprated' && initialTopRatedData){
-                    setTopRatedMovies([{id:1, page:1, data:response}]);
-                }
-            }); 
-        }
-
-    };
-
-    const handleMovieCategorie = (e) => {
-        let currentCategory = e.target.innerText;
-        setCurrentMovie(currentCategory);
-        LoadMovieData(currentCategory);
-    };
 
     return(
 
@@ -54,7 +24,6 @@ const Categories = ({currentMovie, setCurrentMovie,
     );
 
     
-
 };
 
-export default withRouter(Categories);
+export default Categories;
