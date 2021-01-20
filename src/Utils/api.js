@@ -24,9 +24,3 @@ export const getMovies = (genre, page=1) => {
                     })
     return data;
 };
-
-// export const upcomingMoviesUrl = (page=1) =>`${base_url}/upcoming?api_key=${api_key}&language=en-US&page=${page}`;
-
-// export const popularMoviesUrl = (page=1) =>`${base_url}/popular?api_key=${api_key}&language=en-US&page=${page}`;
-
-// export const topRatedMoviesUrl = (page=1) =>`${base_url}/top_rated?api_key=${api_key}&language=en-US&page=${page}`;

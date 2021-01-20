@@ -12,7 +12,9 @@ function App() {
   const [popularMovies, setPopularMovies] = useState([{id:1, page:1, data:[]}]);
   const [upcomingMovies, setUpcomingMovies] = useState([{id:1, page:1, data:[]}]);
   const [topRatedMovies, setTopRatedMovies] = useState([{id:1, page:1, data:[]}]);
+
   const [currentMovie, setCurrentMovie] = useState('Popular');
+
 
   let history = useHistory();
 
@@ -26,10 +28,10 @@ function App() {
   }, []);
 
 
-  const LoadMovieData = (currentCategory) => {
+  const loadInitialMovieData = (currentCategory) => {
 
     const initialUpcomingData = upcomingMovies[0].data.length === 0;
-    const initialTopRatedData = topRatedMovies[0].data.length===0;
+    const initialTopRatedData = topRatedMovies[0].data.length === 0;
 
     if( initialUpcomingData|| initialTopRatedData){
 
@@ -51,7 +53,21 @@ function App() {
 const handleMovieCategorie = (e) => {
     let currentCategory = e.target.innerText;
     setCurrentMovie(currentCategory);
-    LoadMovieData(currentCategory);
+    loadInitialMovieData(currentCategory);
+};
+
+
+const loadMovieDataByPage = (page, movie, setMovie, path) => {
+  const MovieExist = movie.filter( obj => obj.id===page);
+
+  if(MovieExist.length === 0){
+    getMovies(currentMovie, page).then(response => {
+      setMovie(prev => [...prev, { id:page, page:page, data:response }]);
+        history.push(path);
+    });
+  }
+  else
+    history.push(path);
 };
 
 const handlePageClick = (e) => {
@@ -59,41 +75,20 @@ const handlePageClick = (e) => {
   e.preventDefault();
   
   const page = parseInt(e.target.innerText);
+  let path = '';
 
   if(currentMovie === 'Popular'){
-      const MovieExist = popularMovies.filter( obj => obj.id===page);
-      if(MovieExist.length === 0){
-          getMovies(currentMovie, page).then(response => {
-              setPopularMovies(prev => [...prev, { id:page, page:page, data:response }]);
-              history.push(`/${page}`);
-          });
-      }
-      else
-          history.push(`/${page}`);
+    path = `/${page}`;
+    loadMovieDataByPage(page, popularMovies, setPopularMovies, path);
   }
 
   else if(currentMovie === 'Upcoming'){
-      const MovieExist = upcomingMovies.filter( obj => obj.id===page);
-      if(MovieExist.length === 0){
-          getMovies(currentMovie, page).then(response => {
-              setUpcomingMovies(prev => [...prev, { id:page, page:page, data:response }]);
-              history.push(`/upcoming/${page}`);
-
-          });
-      }
-      else
-          history.push(`/upcoming/${page}`);
+    path = `/upcoming/${page}`;
+    loadMovieDataByPage(page, upcomingMovies, setUpcomingMovies,path);
   }
   else{
-      const MovieExist = topRatedMovies.filter( obj => obj.id===page);
-      if(MovieExist.length === 0){
-          getMovies(currentMovie, page).then(response => {
-              setTopRatedMovies(prev => [...prev, { id:page, page:page, data:response }]);
-              history.push(`/toprated/${page}`);
-          });
-      }
-      else
-          history.push(`/toprated/${page}`);
+    path = `/toprated/${page}`;
+    loadMovieDataByPage(page, topRatedMovies, setTopRatedMovies, path);
   }
   
 };

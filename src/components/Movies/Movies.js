@@ -2,11 +2,12 @@ import React from 'react';
 import styles from './Movies.module.css';
 import { getImage } from '../../Utils/api';
 import Overlay from './Overlay/Overlay';
-import { withRouter } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
-const Movies = ({ movies, match}) => {
+const Movies = ({ movies}) => {
 
-    let page = match.params.page;
+    let params = useParams();
+    let page = params.page;
     
     if( page === undefined)
         page = 1;
@@ -33,4 +34,4 @@ const Movies = ({ movies, match}) => {
 
 };
 
-export default withRouter(Movies);
+export default Movies;

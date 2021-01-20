@@ -4,7 +4,16 @@ import styles from './Pagination.module.css';
 
 const Pagination = ({handlePageClick, currentMovie}) => {
 
-    const setPagesLink = (page) => currentMovie === 'Popular'?`/${page}`:`/${currentMovie.toLowerCase()}/${page}`;
+    const setPagesLink = (page) => {
+
+        if(currentMovie === 'Popular'){
+            return `/${page}`;
+        }
+        else{
+            return `/${currentMovie.toLowerCase()}/${page}`;
+        }
+
+    };
 
     const pageNumbers = () => {
         const array = [];
@@ -13,8 +22,7 @@ const Pagination = ({handlePageClick, currentMovie}) => {
             array.push(
                 <Link key={i} 
                     className={styles.page_numbers} 
-                    to={setPagesLink(i.toString())} 
-                    // replace ={setPagesLink(i.toString()) === location.pathname} 
+                    to={setPagesLink(i.toString())}  
                     onClick={handlePageClick}>{i}
                 </Link>
             );
