@@ -15,6 +15,7 @@ function App() {
   const [currentMovie, setCurrentMovie] = useState('Popular');
   const [pageNo, setPageNo] = useState(1);
 
+
   useEffect ( ()=> {
 
     const popularMoviesData = getMovies('popular', pageNo);
@@ -42,25 +43,26 @@ function App() {
 
             <Switch>
 
-              <Route path={`/:${pageNo}?`} exact>
-                <Movies movies={popularMovies} page={pageNo}/>
+              <Route path={`/:page?`} exact>
+                <Movies movies={popularMovies} />
               </Route>
               
-              <Route path={`/upcoming/:${pageNo}`}>
-                <Movies movies={upcomingMovies} page={pageNo}/>
+              <Route path={`/upcoming/:page`}>
+                <Movies movies={upcomingMovies} />
               </Route>
               
-              <Route path={`/toprated/:${pageNo}`}>
-                <Movies movies={topRatedMovies} page={pageNo}/>
+              <Route path={`/toprated/:page`}>
+                <Movies movies={topRatedMovies} />
               </Route>
             </Switch>
 
           </div>
 
           <Pagination 
-            setPage={setPageNo}
             currentMovie={currentMovie}
             popularMovies={popularMovies}
+            upcomingMovies={upcomingMovies}
+            topRatedMovies={topRatedMovies}
             setPopularMovies={setPopularMovies}
             setUpcomingMovies={setUpcomingMovies}
             setTopRatedMovies={setTopRatedMovies}/>

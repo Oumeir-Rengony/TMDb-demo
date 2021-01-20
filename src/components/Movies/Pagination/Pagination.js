@@ -1,32 +1,52 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import styles from './Pagination.module.css';
 import {getMovies} from '../../../Utils/api';
 
-const Pagination = ({setPage, currentMovie, setPopularMovies, setUpcomingMovies, setTopRatedMovies}) => {
-
-    const setMovieData = (prev, response, page) => {
-        let exist = false;
-        prev.forEach((value) => {
-            if (value.page === page)
-                exist = true;
-        });
-        return exist === false ? [...prev, { id:page, page:page, data:response }] : prev;
-    };
+const Pagination = ({history, currentMovie, popularMovies, upcomingMovies, topRatedMovies,
+                        setPopularMovies, setUpcomingMovies, setTopRatedMovies}) => {
 
     const handleClick = (e) => {
+
+        e.preventDefault();
+        
         const page = parseInt(e.target.innerText);
 
-        getMovies(currentMovie, page).then(response => {   
-            if(currentMovie === 'Popular')
-                setPopularMovies(prev => setMovieData(prev, response, page));
-            else if(currentMovie === 'Upcoming')
-                setUpcomingMovies(prev => setMovieData(prev, response, page));
+        if(currentMovie === 'Popular'){
+            const MovieExist = popularMovies.filter( obj => obj.id===page);
+            if(MovieExist.length === 0){
+                getMovies(currentMovie, page).then(response => {
+                    setPopularMovies(prev => [...prev, { id:page, page:page, data:response }]);
+                    history.push(`/${page}`);
+                });
+            }
             else
-                setTopRatedMovies(prev => setMovieData(prev, response, page));
+                history.push(`/${page}`);
+        }
 
-            setPage(page);
-        });
+        else if(currentMovie === 'Upcoming'){
+            const MovieExist = upcomingMovies.filter( obj => obj.id===page);
+            if(MovieExist.length === 0){
+                getMovies(currentMovie, page).then(response => {
+                    setUpcomingMovies(prev => [...prev, { id:page, page:page, data:response }]);
+                    history.push(`/upcoming/${page}`);
+
+                });
+            }
+            else
+                history.push(`/upcoming/${page}`);
+        }
+        else{
+            const MovieExist = topRatedMovies.filter( obj => obj.id===page);
+            if(MovieExist.length === 0){
+                getMovies(currentMovie, page).then(response => {
+                    setTopRatedMovies(prev => [...prev, { id:page, page:page, data:response }]);
+                    history.push(`/toprated/${page}`);
+                });
+            }
+            else
+                history.push(`/toprated/${page}`);
+        }
         
     };
 
@@ -36,6 +56,7 @@ const Pagination = ({setPage, currentMovie, setPopularMovies, setUpcomingMovies,
             return `/${page}`;
         }
         else{
+            console.log(currentMovie.toLowerCase());
             return `/${currentMovie.toLowerCase()}/${page}`;
         }
     };
@@ -44,11 +65,20 @@ const Pagination = ({setPage, currentMovie, setPopularMovies, setUpcomingMovies,
         const array = [];
 
         for(let i=1; i<=10; i++){
-            array.push(<Link key={i} className={styles.page_numbers} to={setPagesLink(i.toString())} onClick={handleClick}>{i}</Link>);
+            array.push(
+                <Link key={i} 
+                    className={styles.page_numbers} 
+                    to={setPagesLink(i.toString())} 
+                    // replace ={setPagesLink(i.toString()) === location.pathname} 
+                    onClick={handleClick}>{i}
+                </Link>
+            );
         }
 
         return array;
     };
+
+    
 
     return (
         <div className={styles.pagination_wrapper}>
@@ -65,4 +95,4 @@ const Pagination = ({setPage, currentMovie, setPopularMovies, setUpcomingMovies,
 
 };
 
-export default Pagination;
+export default withRouter(Pagination);

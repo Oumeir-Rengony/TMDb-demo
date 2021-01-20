@@ -4,11 +4,16 @@ import { getImage } from '../../Utils/api';
 import Overlay from './Overlay/Overlay';
 import { withRouter } from "react-router-dom";
 
-const Movies = ({ movies, page, match}) => {
+const Movies = ({ movies, match}) => {
 
-    console.log(movies);
+    let page = match.params.page;
 
-    const index =  movies.findIndex(movie => movie.page === page);
+    console.log(match);
+    
+    if( page === undefined)
+        page = 1;
+
+    const index =  movies.findIndex(movie => movie.page === parseInt(page));
 
     return(
         <>
