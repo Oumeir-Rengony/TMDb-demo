@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import { Switch, Route, useHistory } from 'react-router-dom';
 import styles from './App.module.css';
 import Movies from './components/Movies/Movies';
@@ -48,57 +48,57 @@ function App() {
         }); 
     }
 
-};
+  };
 
-const handleMovieCategorie = (e) => {
-    let currentCategory = e.target.innerText;
-    setCurrentMovie(currentCategory);
-    loadInitialMovieData(currentCategory);
-};
+  const handleMovieCategorie = useCallback((e) => {
+      let currentCategory = e.target.innerText;
+      setCurrentMovie(currentCategory);
+      loadInitialMovieData(currentCategory);
+  }, [currentMovie]);
 
 
-const loadMovieDataByPage = (page, movie, setMovie, path) => {
-  const MovieExist = movie.filter( obj => obj.id===page);
+  const loadMovieDataByPage = (page, movie, setMovie, path) => {
+    const MovieExist = movie.filter( obj => obj.id===page);
 
-  if(MovieExist.length === 0){
-    getMovies(currentMovie, page).then(response => {
-      setMovie(prev => [...prev, { id:page, page:page, data:response }]);
-        history.push(path);
-    });
-  }
-  else
-    history.push(path);
-};
+    if(MovieExist.length === 0){
+      getMovies(currentMovie, page).then(response => {
+        setMovie(prev => [...prev, { id:page, page:page, data:response }]);
+          history.push(path);
+      });
+    }
+    else
+      history.push(path);
+  };
 
-const handlePageClick = (e) => {
+  const handlePageClick = (e) => {
 
-  e.preventDefault();
-  
-  const page = parseInt(e.target.innerText);
-  let path = '';
+    e.preventDefault();
+    
+    const page = parseInt(e.target.innerText);
+    let path = '';
 
-  if(currentMovie === 'Popular'){
-    path = `/${page}`;
-    loadMovieDataByPage(page, popularMovies, setPopularMovies, path);
-  }
+    if(currentMovie === 'Popular'){
+      path = `/${page}`;
+      loadMovieDataByPage(page, popularMovies, setPopularMovies, path);
+    }
 
-  else if(currentMovie === 'Upcoming'){
-    path = `/upcoming/${page}`;
-    loadMovieDataByPage(page, upcomingMovies, setUpcomingMovies,path);
-  }
-  else{
-    path = `/toprated/${page}`;
-    loadMovieDataByPage(page, topRatedMovies, setTopRatedMovies, path);
-  }
-  
-};
+    else if(currentMovie === 'Upcoming'){
+      path = `/upcoming/${page}`;
+      loadMovieDataByPage(page, upcomingMovies, setUpcomingMovies,path);
+    }
+    else{
+      path = `/toprated/${page}`;
+      loadMovieDataByPage(page, topRatedMovies, setTopRatedMovies, path);
+    }
+    
+  };
 
   
   return (
 
       <div id={styles.Wrapper}>
 
-          <Navbar currentMovie={currentMovie}handleMovieCategorie={handleMovieCategorie}/>
+          <Navbar currentMovie={currentMovie} handleMovieCategorie={handleMovieCategorie}/>
 
           <div className={styles.movie_container}>
 

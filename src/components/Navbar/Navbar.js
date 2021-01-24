@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {memo} from 'react';
 import styles from './Navbar.module.css';
 import Categories from './Categories/Categories';
 import movieIcon from './clapperboard.svg';
@@ -18,4 +18,4 @@ const Navbar = ({currentMovie, handleMovieCategorie}) => {
 
 };
 
-export default Navbar;
+export default memo(Navbar);

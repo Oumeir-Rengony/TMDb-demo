@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './Categories.module.css';
 
-const Categories = ({currentMovie,handleMovieCategorie}) => {
+const Categories = ({currentMovie, handleMovieCategorie}) => {
 
     const [isDropdownVisible, setDropdownVisibility] = useState(false);
 
