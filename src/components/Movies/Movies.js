@@ -6,11 +6,11 @@ import { useParams } from "react-router-dom";
 
 const Movies = ({ movies}) => {
 
-    let params = useParams();
-    let page = params.page;
-    
+    let { page } = useParams()
+   
     if( page === undefined)
         page = 1;
+
 
     const index =  movies.findIndex(movie => movie.page === parseInt(page));
 

@@ -1,8 +1,18 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import styles from './Pagination.module.css';
 
 const Pagination = ({handlePageClick, currentMovie}) => {
+
+    let {pathname} = useLocation();
+    pathname = pathname.split("/");
+    let pageIndex = pathname.length - 1;
+
+    let page = pathname[pageIndex];
+    
+    if(page === "")
+        page=1;
+    
 
     const setPagesLink = (page) => {
 
@@ -15,13 +25,17 @@ const Pagination = ({handlePageClick, currentMovie}) => {
 
     };
 
+    const activePage = (ButtonIndex) => {
+        return ButtonIndex === parseInt(page)?styles.current:null;
+    }
+
     const pageNumbers = () => {
         const array = [];
 
         for(let i=1; i<=10; i++){
             array.push(
                 <Link key={i} 
-                    className={styles.page_numbers} 
+                    className={`${styles.page_numbers} ${activePage(i)}`} 
                     to={setPagesLink(i.toString())}  
                     onClick={handlePageClick}>{i}
                 </Link>
