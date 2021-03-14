@@ -2,7 +2,7 @@ import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import styles from './Pagination.module.css';
 
-const Pagination = ({handlePageClick, currentMovie}) => {
+const Pagination = ({currentMovie}) => {
 
     let {pathname} = useLocation();
     pathname = pathname.split("/");
@@ -10,24 +10,7 @@ const Pagination = ({handlePageClick, currentMovie}) => {
 
     let page = pathname[pageIndex];
     
-    if(page === "")
-        page=1;
-    
-
-    const setPagesLink = (page) => {
-
-        if(currentMovie === 'Popular'){
-            return `/${page}`;
-        }
-        else{
-            return `/${currentMovie.toLowerCase()}/${page}`;
-        }
-
-    };
-
-    const activePage = (ButtonIndex) => {
-        return ButtonIndex === parseInt(page)?styles.current:null;
-    }
+    const activePage = (ButtonIndex) => ButtonIndex === parseInt(page)?styles.current:null;
 
     const pageNumbers = () => {
         const array = [];
@@ -36,8 +19,10 @@ const Pagination = ({handlePageClick, currentMovie}) => {
             array.push(
                 <Link key={i} 
                     className={`${styles.page_numbers} ${activePage(i)}`} 
-                    to={setPagesLink(i.toString())}  
-                    onClick={handlePageClick}>{i}
+                    to={`/${currentMovie}/${i}`}>
+
+                    {i}
+                    
                 </Link>
             );
         }

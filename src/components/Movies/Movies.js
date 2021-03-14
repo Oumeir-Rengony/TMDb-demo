@@ -8,26 +8,35 @@ const Movies = ({ movies}) => {
 
     let { page } = useParams()
    
-    if( page === undefined)
-        page = 1;
-
-
     const index =  movies.findIndex(movie => movie.page === parseInt(page));
+
+    const movieLayout = () => {
+
+        if(index === -1){
+            return <></>;
+        }
+
+        else{
+            return (
+                movies[index].data.map( movie => (
+                    <div key={movie.id} className={styles.container}>
+                        <img src={getImage(movie.poster_path) } className={styles.poster} alt="poster"/>
+                        {!movie.poster_path ? <span className={styles.no_image}>No Image Availaible</span> : null}
+                        <Overlay movie={movie} />
+                    </div>
+                ))
+            );
+        }
+
+    };
 
     return(
         <>
 
             {
-
-                movies[index].data.map( movie => (
-                        <div key={movie.id} className={styles.container}>
-                            <img src={getImage(movie.poster_path) } className={styles.poster} alt="poster"/>
-                            <Overlay movie={movie} />
-                        </div>
-                ))
+                movieLayout()
+                
             }
-
-
         
         </>
     );

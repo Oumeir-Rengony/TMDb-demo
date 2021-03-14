@@ -3,7 +3,7 @@ import styles from './Navbar.module.css';
 import Categories from './Categories/Categories';
 import movieIcon from './clapperboard.svg';
 
-const Navbar = ({currentMovie, handleMovieCategorie}) => {
+const Navbar = ({currentMovie}) => {
 
     return(
         <div className={styles.navbar}>
@@ -12,7 +12,7 @@ const Navbar = ({currentMovie, handleMovieCategorie}) => {
                 <span>MOVIES</span>
             </div>
             
-            <Categories currentMovie={currentMovie} handleMovieCategorie={handleMovieCategorie}/>
+            <Categories currentMovie={currentMovie} />
         </div>
     );
 
