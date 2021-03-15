@@ -1,0 +1,75 @@
+.pagination_wrapper {
+    text-align: center;
+    margin: 40px 0;
+}
+.pagination {
+    display: inline-block;
+    margin-top: 70px;
+    padding: 0 25px;
+    border-radius: 35px;
+    background-color: #fff;
+}
+
+.page_numbers, .prev, .next {
+    display: block;
+    padding: 0 25px;
+    float: left;
+    transition: 400ms ease;
+    color: #595959;
+    font-size: 20px;
+    letter-spacing: 0.1em;
+    line-height: 70px;
+}
+.page_numbers:hover, .page_numbers.current {
+    background-color: #8AA8BD;
+    color: #fff;
+}
+.page_numbers.prev:hover, .page_numbers.next:hover {
+    background-color: transparent;
+    color: #72a2c4;
+}
+
+@media screen and (max-width: 900px) {
+    .page_numbers, .prev, .next { 
+        padding: 0 22px;
+        line-height: 60px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+
+    .page_numbers, .prev, .next {
+        font-size: 18px;
+        padding: 0 18px; 
+    }
+}
+
+@media screen and (max-width: 480px) {
+
+    .pagination_wrapper {
+        margin: 20px 0;
+    }
+
+    .pagination {
+        margin-top: 30px;
+        padding: 0 8px;
+    }
+
+    .page_numbers, .prev, .next { 
+        padding: 0 14px; 
+        line-height: 50px;
+    }
+}
+
+@media screen and (max-width: 360px) {
+
+    .pagination {
+        padding: 0 10px;
+    }
+
+    .page_numbers, .prev, .next { 
+        font-size: 16px;
+        padding: 0 10px; 
+        line-height: 50px;
+    }
+}

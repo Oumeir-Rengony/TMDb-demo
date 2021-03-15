@@ -3,7 +3,7 @@ import { Switch, Route, useLocation, Redirect } from 'react-router-dom';
 import styles from './App.module.css';
 import Movies from './components/Movies/Movies';
 import Navbar from './components/Navbar/Navbar';
-import Pagination from './components/Movies/Pagination/Pagination';
+import Pagination from './components/Pagination/Pagination';
 import { getMovies } from './Utils/api';
 
 
