@@ -3,17 +3,19 @@ import styles from './Movies.module.css';
 import { getImage } from '../../Utils/api';
 import Overlay from './Overlay/Overlay';
 import { useParams } from "react-router-dom";
+import Spinner from './Spinner/Spinner';
 
 const Movies = ({ movies}) => {
 
     let { page } = useParams()
    
+    //check if movie exist in object
     const index =  movies.findIndex(movie => movie.page === parseInt(page));
 
     const movieLayout = () => {
 
         if(index === -1){
-            return <></>;
+            return <Spinner/>;
         }
 
         else{

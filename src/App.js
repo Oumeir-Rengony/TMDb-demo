@@ -1,4 +1,4 @@
-import { useEffect, useState, useCallback } from 'react';
+import { useEffect, useState } from 'react';
 import { Switch, Route, useLocation, Redirect } from 'react-router-dom';
 import styles from './App.module.css';
 import Movies from './components/Movies/Movies';
