@@ -10,19 +10,19 @@ import { getMovies } from './Utils/api';
 function App() {
 
   let location = useLocation();
-  let location_param = location.pathname.split("/");
-  location_param = location_param.filter(item => item);   //remove empty string
-  let category = location_param[0] === undefined ? 'popular' : location_param[0];
-  let page = location_param[1] === undefined ? 1 : parseInt(location_param[1]);
-
-
+  
   const [popularMovies, setPopularMovies] = useState([]);
   const [upcomingMovies, setUpcomingMovies] = useState([]);
   const [topRatedMovies, setTopRatedMovies] = useState([]);
 
-  const [currentMovie, setCurrentMovie] = useState(category);
+  const [currentMovie, setCurrentMovie] = useState('Popular');
 
   useEffect ( ()=> {
+
+    let location_param = location.pathname.split("/");
+    location_param = location_param.filter(item => item);   //remove empty string
+    let category = location_param[0] === undefined ? 'popular' : location_param[0];
+    let page = location_param[1] === undefined ? 1 : parseInt(location_param[1]);
     
     setCurrentMovie(category);
 
